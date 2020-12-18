@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Monitoring Tandon SMP AL-AZHAR 36 BANDUNG</title>
+	<link href="css/bootstrap.min.css" rel="stylesheet">
+	<link href="css/font-awesome.min.css" rel="stylesheet">
+	<link href="css/datepicker3.css" rel="stylesheet">
+	<link href="css/styles.css" rel="stylesheet">
+
+
+	<script src="https://www.gstatic.com/firebasejs/7.3.0/firebase.js"></script>
+	<script src="https://www.gstatic.com/firebasejs/7.3.0/firebase-database.js"></script>
+
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.css"></script>
+
+	<!-- TODO: Add SDKs for Firebase products that you want to use
+     https://firebase.google.com/docs/web/setup#available-libraries -->
+	<script src="https://www.gstatic.com/firebasejs/7.3.0/firebase-analytics.js"></script>
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+    
+    <script src="https://code.highcharts.com/stock/highstock.js"></script>
+    <script src="https://code.highcharts.com/stock/modules/exporting.js"></script>
+    <script src="https://code.highcharts.com/stock/modules/export-data.js"></script>
+
+	
+	
+	<!--Custom Font-->
+	<link href="https://fonts.googleapis.com/css?family=Montserrat:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
+	<!--[if lt IE 9]>
+	<script src="js/html5shiv.js"></script>
+	<script src="js/respond.min.js"></script>
+	<![endif]-->
+</head>
+<body>
+
+
+	<nav class="navbar navbar-custom navbar-fixed-top" role="navigation">
+		<div class="container-fluid">
+			<div class="navbar-header">
+				<a class="navbar-brand" href="#"><span>Monitoring Tandon</a>
+				
+	
+			</div>
+		</div><!-- /.container-fluid -->
+	</nav>
+	
+	<div class="container-fluid">
+	<div class="main ">
+		<div class="row">
+			<ol class="breadcrumb">
+				<li><a href="#">
+					<em class="fa fa-home"></em>
+				</a></li>
+                <li class="active">Data Sensor</li>
+            
+			</ol>
+		</div><!--/.row-->
+		
+		<div class="row">
+			<div class="col-lg-4">
+				<h1 class="page-header">Data Sensor</h1>
+				
+			</div>
+			<div class="col-lg-5">
+
+			</div>
+			<div class="col-lg-3">
+				
+					
+					
+			</div>
+		</div><!--/.row-->
+
+		
+		<div class="panel panel-container panel">
+			
+			<div class="row">
+				<div class="col-md-3 col-lg-3 no-padding">
+					
+				</div>
+				<div class="col-xs-6 col-md-3 col-lg-3 no-padding">
+					<div class="panel panel-blue panel-widget border-right">
+						<div class="row no-padding"><em class="fa fa-xl fa-tint color-blue"></em>
+							<div class="large"><span id="drumA"> </span> %</div>
+							<div class="text-muted">Drum Depan Ruang Staff</div>
+						</div>
+					</div>
+				</div>
+				<div class="col-xs-6 col-md-3 col-lg-3 no-padding">
+					<div class="panel panel-orange panel-widget ">
+						<div class="row no-padding"><em class="fa fa-xl fa-tint color-blue"></em>
+							<div class="large"><span id="drumB"></span> %</div>
+							<div class="text-muted">Drum Depan Ruang Aula</div>
+						</div>
+					</div>
+				</div>
+				
+			</div><!--/.row-->
+		</div>
+							
+					<div class="panel-heading">
+						Data Sensor Drum Depan Ruang Staff
+						<p id="hex-color" class="hide"></p>
+						<span class="pull-right clickable panel-toggle panel-button-tab-left"><em class="fa fa-toggle-up"></em></span></div>
+						<div class="panel-body">
+						<div class="canvas-wrapper">
+								
+                            <div id="container2" style="height: 400px; min-width: 310px"></div>
+						</div>
+					</div>
+
+					<div class="panel-heading">
+						Data Sensor Drum Depan Ruang Aula
+						<p id="hex-color" class="hide"></p>
+						<span class="pull-right clickable panel-toggle panel-button-tab-left"><em class="fa fa-toggle-up"></em></span></div>
+						<div class="panel-body">
+						<div class="canvas-wrapper">
+								
+                            <div id="container3" style="height: 400px; min-width: 310px"></div>
+						</div>
+					</div>
+				</div>
+			
+			</div>
+		</div>
+
+		<footer class="sticky-footer bg-white">
+          <div class="container my-auto">
+            <div class="copyright text-center my-auto">
+			  <span>Copyright &copy; Abdimas 2020</span>
+            </div>
+          </div>
+        </footer>
+		
+
+	</div>
+	</div>	<!--/.main-->
+	
+	<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+	<script src="js/bootstrap.min.js"></script>
+	<script src="js/chart.min.js"></script>
+	<script src="js/chart-data.js"></script>
+	<script src="js/easypiechart.js"></script>
+	<script src="js/easypiechart-data.js"></script>
+	<script src="js/bootstrap-datepicker.js"></script>
+	<script src="js/custom.js"></script>
+	<script src="js/firebaseDrum.js"></script>
+	<script src="js/clock.js"></script>
+    <script src="js/chart.js"></script>
+    <script src="js/data-charts.js"></script>
+
+    <script>
+    Highcharts.stockChart('container2', {
+    chart: {
+        events: {
+            load: function () {
+  
+                // set up the updating of the chart each second
+                var series = this.series[0];
+                setInterval(function () {
+                    var x = (new Date()).getTime(), // current time
+                        y = valueA;
+                    series.addPoint([x, y], true, true);
+                }, 1000);
+            }
+        }
+    },
+  
+    time: {
+        useUTC: false
+    },
+  
+    rangeSelector: {
+        buttons: [{
+            count: 1,
+            type: 'minute',
+            text: '1M'
+        }, {
+            count: 5,
+            type: 'minute',
+            text: '5M'
+        }, {
+            type: 'all',
+            text: 'All'
+        }],
+        inputEnabled: false,
+        selected: 0
+    },
+  
+    title: {
+        text: 'Live Data Drum Depan Ruang Staff'
+    },
+  
+    exporting: {
+        enabled: false
+    },
+  
+    series: [{
+        name: 'Temperature',
+        data: (function () {
+            // generate an array of random data
+            var data1 = [],
+                time = (new Date()).getTime(),
+                i;
+  
+            for (i = -999; i <= 0; i += 1) {
+                data1.push([
+                    time + i * 1000,
+                    valueA
+                ]);
+            }
+            return data1;
+        }())
+    }]
+  });
+
+  Highcharts.stockChart('container3', {
+    chart: {
+        events: {
+            load: function () {
+  
+                // set up the updating of the chart each second
+                var series = this.series[0];
+                setInterval(function () {
+                    var x = (new Date()).getTime(), // current time
+                        y = valueB;
+                    series.addPoint([x, y], true, true);
+                }, 1000);
+            }
+        }
+    },
+  
+    time: {
+        useUTC: false
+    },
+  
+    rangeSelector: {
+        buttons: [{
+            count: 1,
+            type: 'minute',
+            text: '1M'
+        }, {
+            count: 5,
+            type: 'minute',
+            text: '5M'
+        }, {
+            type: 'all',
+            text: 'All'
+        }],
+        inputEnabled: false,
+        selected: 0
+    },
+  
+    title: {
+        text: 'Live Data Drum Depan Ruang Staff'
+    },
+  
+    exporting: {
+        enabled: false
+    },
+  
+    series: [{
+        name: 'Temperature',
+        data: (function () {
+            // generate an array of random data
+            var data1 = [],
+                time = (new Date()).getTime(),
+                i;
+  
+            for (i = -999; i <= 0; i += 1) {
+                data1.push([
+                    time + i * 1000,
+                    valueB
+                ]);
+            }
+            return data1;
+        }())
+    }]
+  });
+  
+ 
+    
+    
+    
+    </script>
+
+
+
+
+		
+</body>
+</html>
